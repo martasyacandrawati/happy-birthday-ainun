@@ -136,21 +136,23 @@
     const background = document.getElementById('background');
     const music = document.getElementById('birthdayMusic');
 
-      generateBalloons();
-    
-    startBtn.addEventListener('click', () => {
-      startBtn.classList.add('hidden');
-      message.classList.remove('hidden');
-      balloons.classList.add('hidden');
-      petals.classList.remove('hidden');
+      startBtn.addEventListener('click', () => {
+  startBtn.classList.add('hidden');
+  message.classList.remove('hidden');
 
-      generatePetals();
+  balloons.classList.add('fade-out');
+  setTimeout(() => {
+    balloons.innerHTML = ''; // ini benar-benar hapus balonnya
+  }, 1000);
 
-      music.currentTime = 0;
-      music.play().catch((e) => {
-        console.log('Autoplay blocked:', e);
-      });
-    });
+  petals.classList.remove('hidden');
+  generatePetals();
+
+  music.currentTime = 0;
+  music.play().catch((e) => {
+    console.log('Autoplay blocked or audio not found:', e);
+  });
+});
 
     cakeBtn.addEventListener('click', () => {
       cakeSection.classList.remove('hidden');
