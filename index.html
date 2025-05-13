@@ -12,17 +12,19 @@
       background-color: #fff0f5;
       text-align: center;
       overflow-x: hidden;
+    }
+    .hidden {
+      display: none;
+    }
+    .centered {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
     }
-    .hidden {
-      display: none;
-    }
     .balloons {
-      position: absolute;
+      position: fixed;
       width: 100%;
       height: 100%;
       top: 0;
@@ -77,20 +79,22 @@
 <body>
   <div id="background"></div>
 
-  <button id="startBtn">Klik</button>
+  <div id="main" class="centered">
+    <button id="startBtn">Klik</button>
 
-  <div id="message" class="hidden">
-    <h1>Happy Birthday!</h1>
-    <p>Thank you so much for being my support system during college.<br>
-       Semoga bisa bareng terus sampe lulus dan cumlaude!</p>
-    <button id="cakeBtn">🎂 Cake for u 🎂</button>
+    <div id="message" class="hidden">
+      <h1>Happy Birthday!</h1>
+      <p>Thank you so much for being my support system during college.<br>
+         Semoga bisa bareng terus sampe lulus dan cumlaude!</p>
+      <button id="cakeBtn">🎂 Cake for u 🎂</button>
+    </div>
+
+    <div id="cakeSection" class="hidden">
+      <img src="cake.jpg" alt="Birthday Cake">
+    </div>
   </div>
 
   <div class="balloons hidden" id="balloons"></div>
-
-  <div id="cakeSection" class="hidden">
-    <img src="cake.jpg" alt="Birthday Cake">
-  </div>
 
   <audio id="birthdayMusic" src="birthday.mp3"></audio>
 
@@ -129,4 +133,3 @@
   </script>
 </body>
 </html>
-
