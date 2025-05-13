@@ -36,11 +36,13 @@
       background-color: pink;
       border-radius: 50% 50% 45% 45%;
       position: absolute;
+      bottom: -60px;
       animation: float 6s ease-in-out infinite;
+      opacity: 0.8;
     }
     @keyframes float {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(-150vh); }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
     }
     #cakeSection img {
       width: 250px;
@@ -59,5 +61,72 @@
     }
     button {
       padding: 12px 24px;
-      font
+      font-size: 20px;
+      border-radius: 12px;
+      border: none;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    #message {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="background"></div>
+
+  <button id="startBtn">Klik</button>
+
+  <div id="message" class="hidden">
+    <h1>Happy Birthday!</h1>
+    <p>Thank you so much for being my support system during college.<br>
+       Semoga bisa bareng terus sampe lulus dan cumlaude!</p>
+    <button id="cakeBtn">🎂 Cake for u 🎂</button>
+  </div>
+
+  <div class="balloons hidden" id="balloons"></div>
+
+  <div id="cakeSection" class="hidden">
+    <img src="cake.jpg" alt="Birthday Cake">
+  </div>
+
+  <audio id="birthdayMusic" src="birthday.mp3"></audio>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const message = document.getElementById('message');
+    const balloons = document.getElementById('balloons');
+    const cakeBtn = document.getElementById('cakeBtn');
+    const cakeSection = document.getElementById('cakeSection');
+    const background = document.getElementById('background');
+    const music = document.getElementById('birthdayMusic');
+
+    startBtn.addEventListener('click', () => {
+      startBtn.classList.add('hidden');
+      message.classList.remove('hidden');
+      balloons.classList.remove('hidden');
+      generateBalloons();
+    });
+
+    cakeBtn.addEventListener('click', () => {
+      cakeSection.classList.remove('hidden');
+      background.style.backgroundImage = "url('https://i.pinimg.com/originals/5f/f4/1f/5ff41f9b0cbb252e295f5073b47ce4c7.png')";
+      music.play();
+    });
+
+    function generateBalloons() {
+      for (let i = 0; i < 30; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.backgroundColor = ['#ff69b4', '#ffd700', '#add8e6'][Math.floor(Math.random() * 3)];
+        balloon.style.animationDuration = (4 + Math.random() * 4) + 's';
+        balloons.appendChild(balloon);
+      }
+    }
+  </script>
+</body>
+</html>
 
