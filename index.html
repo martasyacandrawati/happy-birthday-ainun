@@ -121,7 +121,7 @@
     </div>
   </div>
 
-  <div class="balloons hidden" id="balloons"></div>
+  <div class="balloons" id="balloons"></div>
   <div class="petals hidden" id="petals"></div>
 
   <audio id="birthdayMusic" src="Kanyaah - Nadin Amizah _ Lirik-yt.savetube.me.mp3" preload="auto"></audio>
@@ -136,13 +136,14 @@
     const background = document.getElementById('background');
     const music = document.getElementById('birthdayMusic');
 
+      generateBalloons();
+    
     startBtn.addEventListener('click', () => {
       startBtn.classList.add('hidden');
       message.classList.remove('hidden');
-      balloons.classList.remove('hidden');
+      balloons.classList.add('hidden');
       petals.classList.remove('hidden');
 
-      generateBalloons();
       generatePetals();
 
       music.currentTime = 0;
