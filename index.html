@@ -23,7 +23,7 @@
       justify-content: center;
       min-height: 100vh;
     }
-    .balloons {
+    .balloons, .petals {
       position: fixed;
       width: 100%;
       height: 100%;
@@ -46,6 +46,31 @@
       0% { transform: translateY(0); }
       100% { transform: translateY(-120vh); }
     }
+
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://pngimg.com/uploads/petals/petals_PNG72340.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall 8s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
     #cakeSection img {
       width: 250px;
       height: auto;
@@ -95,38 +120,38 @@
   </div>
 
   <div class="balloons hidden" id="balloons"></div>
+  <div class="petals hidden" id="petals"></div>
 
-  <audio id="birthdayMusic" src="Kanyaah - Nadin Amizah _ Lirik-yt.savetube.me.mp3" preload="auto"></audio>
+  <audio id="birthdayMusic" src="07c22722-187f-4564-9bdb-5ab623812e35.mp3" preload="auto"></audio>
 
   <script>
     const startBtn = document.getElementById('startBtn');
     const message = document.getElementById('message');
     const balloons = document.getElementById('balloons');
+    const petals = document.getElementById('petals');
     const cakeBtn = document.getElementById('cakeBtn');
     const cakeSection = document.getElementById('cakeSection');
     const background = document.getElementById('background');
     const music = document.getElementById('birthdayMusic');
 
-  startBtn.addEventListener('click', () => {
-  startBtn.classList.add('hidden');
-  message.classList.remove('hidden');
-  balloons.classList.remove('hidden');
-  generateBalloons();
+    startBtn.addEventListener('click', () => {
+      startBtn.classList.add('hidden');
+      message.classList.remove('hidden');
+      balloons.classList.remove('hidden');
+      petals.classList.remove('hidden');
 
-  // Mulai musik
-  music.currentTime = 0;
-  music.play().then(() => {
-    console.log('Music started');
-  }).catch((error) => {
-    console.log('Music play failed:', error);
-  });
-});
+      generateBalloons();
+      generatePetals();
 
+      music.currentTime = 0;
+      music.play().catch((e) => {
+        console.log('Autoplay blocked:', e);
+      });
+    });
 
     cakeBtn.addEventListener('click', () => {
       cakeSection.classList.remove('hidden');
       background.style.backgroundImage = "url('https://i.pinimg.com/originals/5f/f4/1f/5ff41f9b0cbb252e295f5073b47ce4c7.png')";
-      music.play();
     });
 
     function generateBalloons() {
@@ -137,6 +162,17 @@
         balloon.style.backgroundColor = ['#ff69b4', '#ffd700', '#add8e6'][Math.floor(Math.random() * 3)];
         balloon.style.animationDuration = (4 + Math.random() * 4) + 's';
         balloons.appendChild(balloon);
+      }
+    }
+
+    function generatePetals() {
+      for (let i = 0; i < 30; i++) {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.animationDuration = (6 + Math.random() * 4) + 's';
+        petal.style.animationDelay = (Math.random() * 5) + 's';
+        petals.appendChild(petal);
       }
     }
   </script>
