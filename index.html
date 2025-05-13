@@ -107,12 +107,14 @@
     const background = document.getElementById('background');
     const music = document.getElementById('birthdayMusic');
 
-    startBtn.addEventListener('click', () => {
-      startBtn.classList.add('hidden');
-      message.classList.remove('hidden');
-      balloons.classList.remove('hidden');
-      generateBalloons();
-    });
+   startBtn.addEventListener('click', () => {
+  startBtn.classList.add('hidden');
+  message.classList.remove('hidden');
+  balloons.classList.remove('hidden');
+  generateBalloons();
+  music.currentTime = 0;
+  music.play();
+});
 
     cakeBtn.addEventListener('click', () => {
       cakeSection.classList.remove('hidden');
