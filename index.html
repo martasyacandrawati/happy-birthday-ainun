@@ -96,7 +96,7 @@
 
   <div class="balloons hidden" id="balloons"></div>
 
-  <audio id="birthdayMusic" src="Kanyaah - Nadin Amizah _ Lirik-yt.savetube.me.mp3"></audio>
+  <audio id="birthdayMusic" src="Kanyaah - Nadin Amizah _ Lirik-yt.savetube.me.mp3" preload="auto"></audio>
 
   <script>
     const startBtn = document.getElementById('startBtn');
@@ -107,14 +107,21 @@
     const background = document.getElementById('background');
     const music = document.getElementById('birthdayMusic');
 
-   startBtn.addEventListener('click', () => {
+  startBtn.addEventListener('click', () => {
   startBtn.classList.add('hidden');
   message.classList.remove('hidden');
   balloons.classList.remove('hidden');
   generateBalloons();
+
+  // Mulai musik
   music.currentTime = 0;
-  music.play();
+  music.play().then(() => {
+    console.log('Music started');
+  }).catch((error) => {
+    console.log('Music play failed:', error);
+  });
 });
+
 
     cakeBtn.addEventListener('click', () => {
       cakeSection.classList.remove('hidden');
