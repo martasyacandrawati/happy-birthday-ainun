@@ -49,15 +49,14 @@
 
     .petal {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-image: url('https://pngimg.com/uploads/petals/petals_PNG72340.png');
-      background-size: contain;
-      background-repeat: no-repeat;
+      width: 12px;
+      height: 18px;
+      background-color: pink;
+      border-radius: 50% 50% 50% 50%;
+      opacity: 0.7;
       animation: fall 8s linear infinite;
       pointer-events: none;
       z-index: -1;
-      opacity: 0.8;
     }
 
     @keyframes fall {
@@ -76,6 +75,7 @@
       height: auto;
       margin-top: 20px;
     }
+
     #background {
       position: fixed;
       top: 0;
@@ -86,6 +86,7 @@
       background-repeat: repeat;
       z-index: -2;
     }
+
     button {
       padding: 12px 24px;
       font-size: 20px;
@@ -96,6 +97,7 @@
       cursor: pointer;
       margin-top: 20px;
     }
+
     #message {
       margin-top: 30px;
     }
@@ -122,7 +124,7 @@
   <div class="balloons hidden" id="balloons"></div>
   <div class="petals hidden" id="petals"></div>
 
-  <audio id="birthdayMusic" src="Kanyaah - Nadin Amizah _ Lirik-yt.savetube.me.mp3" preload="auto"></audio>
+  <audio id="birthdayMusic" src="07c22722-187f-4564-9bdb-5ab623812e35.mp3" preload="auto"></audio>
 
   <script>
     const startBtn = document.getElementById('startBtn');
@@ -166,10 +168,11 @@
     }
 
     function generatePetals() {
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 40; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal');
         petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.top = '-20px';
         petal.style.animationDuration = (6 + Math.random() * 4) + 's';
         petal.style.animationDelay = (Math.random() * 5) + 's';
         petals.appendChild(petal);
