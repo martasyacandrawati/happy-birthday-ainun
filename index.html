@@ -5,10 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Birthday Surprise</title>
   <style>
+    @font-face {
+  font-family: 'CocoGothic';
+  src: url('fonts/CocoGothic.ttf') format('truetype');
+}
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Comic Sans MS', cursive;
+      font-family: 'CocoGothic', sans-serif;
       background-color: #fff0f5;
       text-align: center;
       overflow-x: hidden;
@@ -115,18 +119,19 @@
       margin-top: 10px;
     }
 
-    #wishText {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      text-align: center;
-      font-size: 16px;
-      color: #002f6c;
-      font-weight: bold;
-      word-wrap: break-word;
-    }
+   #wishText {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+  font-size: 16px;
+  color: #002f6c;
+  font-weight: bold;
+  word-wrap: break-word;
+  padding-top: 20px; /* ini bikin turun isi teksnya */
+}
   </style>
 </head>
 <body>
