@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Birthday Surprise</title>
   <style>
     body {
@@ -13,6 +12,11 @@
       background-color: #fff0f5;
       text-align: center;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
     .hidden {
       display: none;
@@ -38,30 +42,10 @@
       0% { transform: translateY(100vh); }
       100% { transform: translateY(-150vh); }
     }
-    #cake {
-      margin: 40px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .tier {
-      width: 200px;
-      height: 60px;
-      background: pink;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      border: 5px solid #fff5ee;
-    }
-    .tier:nth-child(2) {
-      width: 150px;
-    }
-    .tier:nth-child(3) {
-      width: 100px;
-    }
-    .teddy {
-      width: 100px;
+    #cakeSection img {
+      width: 250px;
       height: auto;
-      margin-top: -10px;
+      margin-top: 20px;
     }
     #background {
       position: fixed;
@@ -74,73 +58,6 @@
       z-index: -2;
     }
     button {
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 12px;
-      border: none;
-      background-color: #ff69b4;
-      color: white;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div id="background"></div>
-  <button id="startBtn">Klik</button>
+      padding: 12px 24px;
+      font
 
-  <div id="message" class="hidden">
-    <h1>Happy Birthday!</h1>
-    <p>Thank you so much for being my support system during college.<br>
-       Semoga bisa bareng terus sampe lulus dan cumlaude!</p>
-    <button id="cakeBtn">🎂 Cake for u 🎂</button>
-  </div>
-
-  <div class="balloons hidden" id="balloons"></div>
-
-  <div id="cakeSection" class="hidden">
-    <div id="cake">
-      <div class="tier"></div>
-      <div class="tier"></div>
-      <div class="tier"></div>
-      <img class="teddy" src="https://i.pinimg.com/736x/fe/a2/bf/fea2bf51fdf04e727d66cc0b614915b6.jpg" alt="Teddy Bear">
-    </div>
-  </div>
-
-  <audio id="birthdayMusic" src="birthday.mp3"></audio>
-
-  <script>
-    const startBtn = document.getElementById('startBtn');
-    const message = document.getElementById('message');
-    const balloons = document.getElementById('balloons');
-    const cakeBtn = document.getElementById('cakeBtn');
-    const cakeSection = document.getElementById('cakeSection');
-    const background = document.getElementById('background');
-    const music = document.getElementById('birthdayMusic');
-
-    startBtn.addEventListener('click', () => {
-      startBtn.classList.add('hidden');
-      message.classList.remove('hidden');
-      balloons.classList.remove('hidden');
-      generateBalloons();
-    });
-
-    cakeBtn.addEventListener('click', () => {
-      cakeSection.classList.remove('hidden');
-      background.style.backgroundImage = "url('https://i.pinimg.com/originals/5f/f4/1f/5ff41f9b0cbb252e295f5073b47ce4c7.png')";
-      music.play();
-    });
-
-    function generateBalloons() {
-      for (let i = 0; i < 30; i++) {
-        const balloon = document.createElement('div');
-        balloon.classList.add('balloon');
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.backgroundColor = ['#ff69b4', '#ffd700', '#add8e6'][Math.floor(Math.random() * 3)];
-        balloon.style.animationDuration = (4 + Math.random() * 4) + 's';
-        balloons.appendChild(balloon);
-      }
-    }
-  </script>
-</body>
-</html>
